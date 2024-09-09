@@ -109,6 +109,22 @@
       );
     };
 
+    const Footer = () => {
+        return (
+            <footer className="footer">
+                <div className="footer-info container">
+                    <div className="payment">
+                        <strong>Способы оплаты</strong>
+                        <a href="#" className="payments master-card" target="_blank">Mastercard</a>
+                        <a href="#" className="payments visa" target="_blank">Visa</a>
+                        <a href="#" className="payments yandex" target="_blank">Yandex</a>
+                    </div>
+                    <p className="address">г. Москва, улица Свободы 1/7</p>
+                </div>
+            </footer>
+        );
+    };
+
     const App = () => {
         return (
             <>
@@ -117,6 +133,7 @@
                     <Sidebar/>
                     <Content/>
                 </div>
+                <Footer/>
             </>
         );
     };
