@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+    const Header = () => {
+      return (
+        <div className="header-info">
+          <div className="container info-wrapper">
+            <a href="#" className="logo">
+              <img src="https://www.cheese.com/static/common/img/logo.3feae68fc57a.svg" alt="Сыроварение" />
+            </a>
+            <div className="advantages">
+              <span className="delivery">Бесплатная доставка</span>
+              <span className="protection">Защита покупателей</span>
+            </div>
+            <div className="contacts">
+              <a href="tel:+89164601960" className="phone">+8 916 460-19-60</a>
+              <button className="callback" type="button">Заказать звонок</button>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    const Sidebar = () => {
+      return (
+        <aside className="sidebar">
+          <nav className="ingredients">
+            <h3 className="ingredients-title">Ингредиенты</h3>
+            <ul className="ingredients-list">
+              <li><a href="#">Закваски для сыра</a></li>
+              <li><a href="#">Ферменты для сыра</a></li>
+              <li><a href="#">Хлористый кальций</a></li>
+              <li><a href="#">Плесень для сыра</a></li>
+              <li><a href="#">Кисломолочные закваски</a></li>
+              <li><a href="#">Красители для сыра</a></li>
+              <li><a href="#">Специи для сыра</a></li>
+            </ul>
+          </nav>
+        </aside>
+      );
+    };
+
+    const RecipeCard = (props) => {
+      return (
+        <div className="recipe-card">
+          <div className="recipe-img">
+            <img src={props.url} alt={props.title}/>
+          </div>
+          <div className="recipe-info">
+            <h4>{props.title}</h4>
+            <a href="#" className="link-arrow">Смотреть</a>
+          </div>
+        </div>
+      );
+    };
+
+    const recipes = [
+      {
+        title: 'Молодые сыры',
+        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBWEOrlhWRaGCAYIXbUvunhZwH31zAF7vIcQ&s'
+      },
+      {
+        title: 'Твердые сыры',
+        url: 'https://artdugout.ru/upload/iblock/aaf/qc9h4w0ye4d1b4v3wumei3hhf4fwc9l6.jpg'
+      },
+      {
+        title: 'Полутвердые сыры',
+        url: 'https://artdugout.ru/upload/iblock/e56/fxfqn2krrdsmxh600i01alvbsrwsup58.jpg'
+      },
+      {
+        title: 'Паста филата',
+        url: 'https://pro-syr.ru/image/catalog/blog/syr-pasta-filata.jpg'
+      },
+      {
+        title: 'Кисломолочные сыры',
+        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO_lcNT5q46O6UY_hxx7KgGmd8o4n2KgI-Uw&s'
+      },
+      {
+        title: 'Рассольные сыры',
+        url: 'https://www.edimdoma.ru/system/images/contents/0000/2614/wide/AdobeStock_105364477.jpg?1552991239'
+      },
+    ];
+
+    const Content = () => {
+      return (
+        <main className="main">
+          <section className="recipes">
+            <div className="recipe-cards">
+              {recipes.map((recipe, index) => (
+                <RecipeCard
+                  key={index}
+                  title={recipe.title}
+                  url={recipe.url}
+                />
+              ))}
+            </div>
+          </section>
+        </main>
+      );
+    };
+
+    const App = () => {
+        return (
+            <>
+                <Header/>
+                <div className="container content">
+                    <Sidebar/>
+                    <Content/>
+                </div>
+            </>
+        );
+    };
+
+    ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
+  </script>
+</body>
+</html>
